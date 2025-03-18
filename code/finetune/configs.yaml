@@ -1,0 +1,72 @@
+# Data
+data_dir: "./data/dataset_split/"
+num_workers: 0 # Num workers for data loader
+max_length: 2048
+
+
+# Prompt engineering
+prompt_style: 1 # Choose between 1 or 2
+add_question_type: false
+add_reasoning_steps: false
+
+
+# Optimization
+num_epochs: 3 # Number of epochs
+num_warmup_steps: 35 # Proportion of warmup training steps, set as 35 since (0.03 * num_train_steps) = (0.03 * (num_batches * epochs)) = (0.03 * 1170) ~ 35
+lr: 1e-4 # Learning rate
+batch_size: 8 # Batch size train
+val_batch_size: 8 # Batch size val
+test_batch_size: 1 # Batch size test
+use_grad_clip: true
+grad_clip: 1.0
+use_lr_scheduler: true
+
+
+# BitsAndBytes config
+load_in_8bit: true # Param used in zero shot evaluation only, finetuning happens in 8bit always
+
+
+# LoRA config
+lora_alpha: 32
+lora_dropout: 0.05
+lora_r: 16
+
+
+# Trainer
+model_name: "meta-llama/Llama-2-7b-chat-hf"
+run_testing: true
+
+
+# Misc
+exp_name: "sft"
+seed: 21
+use_cuda: true # Use cuda
+debug: false # Debug with less data
+log_wandb: true # Log experiments with weights and biases
+wandb_project: "syllabus-qa"
+model_checkpoint_dir: "./checkpoints/"
+results_dir: "./results/"
+
+
+# Retrieval Aug Gen
+rag: false
+retriever_name: "bm-25"
+k: 5
+oracle_retriever: false
+chunk_size: 1000
+chunk_overlap: 200
+
+
+# Generation
+max_new_tokens: 256
+do_sample: true
+top_p: 0.95
+top_k: 50
+
+
+# Testing (standalone)
+testing: false
+wandb_run_name: "kool_kat"
+csv_filename: None
+start_index: 0
+end_index: -1

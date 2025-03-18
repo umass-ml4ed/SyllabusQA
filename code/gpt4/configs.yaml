@@ -1,0 +1,13 @@
+# Data
+data_dir: "./data/dataset_split/"
+syllabi_dir: "./syllabi/syllabi_redacted"
+syllabi_type: "pdf"
+start_index: 0
+end_index: -1
+
+
+# Misc
+exp_name: "gpt4_retrieval_assistant"
+seed: 21
+results_dir: "./results/gpt4/"
+debug: false # Debug with less data
